@@ -5,6 +5,17 @@ import de.marhali.json5.Json5Array;
 import de.marhali.json5.Json5Element;
 import de.marhali.json5.Json5Object;
 import de.marhali.json5.Json5Primitive;
+import net.syrupstudios.syruplibrary.config.diagnostic.ConfigIssue;
+import net.syrupstudios.syruplibrary.config.diagnostic.ConfigIssueSeverity;
+import net.syrupstudios.syruplibrary.config.diagnostic.ConfigLoadResult;
+import net.syrupstudios.syruplibrary.config.value.BooleanConfigValue;
+import net.syrupstudios.syruplibrary.config.value.ConfigValue;
+import net.syrupstudios.syruplibrary.config.value.DoubleConfigValue;
+import net.syrupstudios.syruplibrary.config.value.EnumConfigValue;
+import net.syrupstudios.syruplibrary.config.value.IntConfigValue;
+import net.syrupstudios.syruplibrary.config.value.LongConfigValue;
+import net.syrupstudios.syruplibrary.config.value.StringConfigValue;
+import net.syrupstudios.syruplibrary.config.value.StringListConfigValue;
 
 import java.io.Reader;
 import java.math.BigDecimal;

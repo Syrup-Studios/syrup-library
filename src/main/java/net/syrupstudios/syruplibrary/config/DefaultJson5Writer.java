@@ -1,5 +1,10 @@
 package net.syrupstudios.syruplibrary.config;
 
+import net.syrupstudios.syruplibrary.config.value.ConfigValue;
+import net.syrupstudios.syruplibrary.config.value.DoubleConfigValue;
+import net.syrupstudios.syruplibrary.config.value.IntConfigValue;
+import net.syrupstudios.syruplibrary.config.value.LongConfigValue;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.AtomicMoveNotSupportedException;

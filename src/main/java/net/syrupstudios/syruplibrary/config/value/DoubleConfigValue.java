@@ -1,4 +1,7 @@
-package net.syrupstudios.syruplibrary.config;
+package net.syrupstudios.syruplibrary.config.value;
+
+import net.syrupstudios.syruplibrary.config.ConfigSpec;
+import net.syrupstudios.syruplibrary.config.RestartRequirement;
 
 import java.util.List;
 
@@ -7,8 +10,9 @@ public final class DoubleConfigValue extends ConfigValue<Double> {
     private final double minimum;
     private final double maximum;
 
-    DoubleConfigValue(ConfigSpec spec, String key, String path, double defaultValue, double minimum, double maximum,
-                      List<String> description, RestartRequirement restartRequirement) {
+    public DoubleConfigValue(ConfigSpec spec, String key, String path, double defaultValue,
+                             double minimum, double maximum, List<String> description,
+                             RestartRequirement restartRequirement) {
         super(spec, key, path, Double.class, defaultValue, description, restartRequirement);
         if (!Double.isFinite(defaultValue) || !Double.isFinite(minimum) || !Double.isFinite(maximum)
                 || minimum > maximum || defaultValue < minimum || defaultValue > maximum) {

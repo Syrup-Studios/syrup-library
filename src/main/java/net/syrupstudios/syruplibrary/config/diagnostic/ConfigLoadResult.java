@@ -1,4 +1,4 @@
-package net.syrupstudios.syruplibrary.config;
+package net.syrupstudios.syruplibrary.config.diagnostic;
 
 import java.util.List;
 

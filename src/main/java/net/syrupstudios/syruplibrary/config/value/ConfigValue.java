@@ -1,10 +1,15 @@
-package net.syrupstudios.syruplibrary.config;
+package net.syrupstudios.syruplibrary.config.value;
+
+import net.syrupstudios.syruplibrary.config.ConfigSpec;
+import net.syrupstudios.syruplibrary.config.RestartRequirement;
 
 import java.util.List;
 import java.util.Objects;
 
 /** Base type for a typed configuration value. */
-public abstract class ConfigValue<T> {
+public abstract sealed class ConfigValue<T>
+        permits BooleanConfigValue, DoubleConfigValue, EnumConfigValue, IntConfigValue,
+        LongConfigValue, StringConfigValue, StringListConfigValue {
     private final ConfigSpec spec;
     private final String key;
     private final String path;
@@ -13,7 +18,7 @@ public abstract class ConfigValue<T> {
     private final List<String> description;
     private final RestartRequirement restartRequirement;
 
-    ConfigValue(
+    protected ConfigValue(
             ConfigSpec spec,
             String key,
             String path,
@@ -63,29 +68,29 @@ public abstract class ConfigValue<T> {
 
     /** Returns the value currently effective in the running process. */
     public final T get() {
-        return spec.currentState().effective().get(this);
+        return spec.effectiveValue(this);
     }
 
     /** Returns the latest successfully parsed value, including restart-pending edits. */
     public final T configuredValue() {
-        return spec.currentState().configured().get(this);
+        return spec.configuredValue(this);
     }
 
     /** Returns the value captured during initial loading. */
     public final T startupValue() {
-        return spec.currentState().startup().get(this);
+        return spec.startupValue(this);
     }
 
     @SuppressWarnings("unchecked")
-    final T cast(Object value) {
+    public final T cast(Object value) {
         return copy((T) value);
     }
 
-    T copy(T value) {
+    protected T copy(T value) {
         return value;
     }
 
-    ConfigSpec spec() {
+    protected final ConfigSpec spec() {
         return spec;
     }
 }

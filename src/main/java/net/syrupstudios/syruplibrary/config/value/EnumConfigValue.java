@@ -1,4 +1,7 @@
-package net.syrupstudios.syruplibrary.config;
+package net.syrupstudios.syruplibrary.config.value;
+
+import net.syrupstudios.syruplibrary.config.ConfigSpec;
+import net.syrupstudios.syruplibrary.config.RestartRequirement;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -10,8 +13,8 @@ public final class EnumConfigValue<E extends Enum<E>> extends ConfigValue<E> {
     private final Class<E> enumType;
     private final Map<String, E> serializedValues;
 
-    EnumConfigValue(ConfigSpec spec, String key, String path, Class<E> enumType, E defaultValue,
-                    List<String> description, RestartRequirement restartRequirement) {
+    public EnumConfigValue(ConfigSpec spec, String key, String path, Class<E> enumType, E defaultValue,
+                           List<String> description, RestartRequirement restartRequirement) {
         super(spec, key, path, enumType, defaultValue, description, restartRequirement);
         this.enumType = enumType;
         Map<String, E> names = new LinkedHashMap<>();
@@ -30,5 +33,5 @@ public final class EnumConfigValue<E extends Enum<E>> extends ConfigValue<E> {
     /** Returns the stable JSON5 representation of a constant. */
     public String serialize(E value) { return value.name().toLowerCase(Locale.ROOT); }
 
-    E parse(String value) { return serializedValues.get(value.toLowerCase(Locale.ROOT)); }
+    public E parse(String value) { return serializedValues.get(value.toLowerCase(Locale.ROOT)); }
 }

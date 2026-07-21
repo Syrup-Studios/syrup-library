@@ -1,5 +1,13 @@
 package net.syrupstudios.syruplibrary.config;
 
+import net.syrupstudios.syruplibrary.config.value.BooleanConfigValue;
+import net.syrupstudios.syruplibrary.config.value.DoubleConfigValue;
+import net.syrupstudios.syruplibrary.config.value.EnumConfigValue;
+import net.syrupstudios.syruplibrary.config.value.IntConfigValue;
+import net.syrupstudios.syruplibrary.config.value.LongConfigValue;
+import net.syrupstudios.syruplibrary.config.value.StringConfigValue;
+import net.syrupstudios.syruplibrary.config.value.StringListConfigValue;
+
 import java.util.List;
 import java.util.function.Predicate;
 

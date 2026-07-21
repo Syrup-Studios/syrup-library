@@ -1,5 +1,8 @@
 package net.syrupstudios.syruplibrary.config;
 
+import net.syrupstudios.syruplibrary.config.diagnostic.ConfigIssue;
+import net.syrupstudios.syruplibrary.config.diagnostic.ConfigIssueSeverity;
+import net.syrupstudios.syruplibrary.config.diagnostic.ConfigLoadResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

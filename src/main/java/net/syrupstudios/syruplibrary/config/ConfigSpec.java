@@ -1,5 +1,7 @@
 package net.syrupstudios.syruplibrary.config;
 
+import net.syrupstudios.syruplibrary.config.value.ConfigValue;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -79,6 +81,21 @@ public final class ConfigSpec extends ConfigContainer {
     }
 
     ConfigState currentState() { return state.get(); }
+
+    /** Returns a typed value from the current effective snapshot. */
+    public <T> T effectiveValue(ConfigValue<T> value) {
+        return currentState().effective().get(value);
+    }
+
+    /** Returns a typed value from the latest configured snapshot. */
+    public <T> T configuredValue(ConfigValue<T> value) {
+        return currentState().configured().get(value);
+    }
+
+    /** Returns a typed value from the initial startup snapshot. */
+    public <T> T startupValue(ConfigValue<T> value) {
+        return currentState().startup().get(value);
+    }
 
     void publish(ConfigState newState) { state.set(newState); }
 

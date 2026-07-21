@@ -1,4 +1,4 @@
-package net.syrupstudios.syruplibrary.config;
+package net.syrupstudios.syruplibrary.config.diagnostic;
 
 /**
  * A structured diagnostic produced while loading configuration.
