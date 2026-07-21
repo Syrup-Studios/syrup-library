@@ -7,9 +7,9 @@ val mcVersion = property("deps.minecraft") as String
 val forgeVersion = property("deps.forge_version") as String
 val targetJavaVersion = 17
 
-version = property("mod.version") as String
+version = "${property("mod.version")}+$mcVersion-forge"
 group = property("mod.group") as String
-base.archivesName = "${property("mod.id")}-$mcVersion-forge"
+base.archivesName = property("mod.id") as String
 
 legacyForge {
     setVersion("$mcVersion-$forgeVersion")

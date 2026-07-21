@@ -1,9 +1,11 @@
 import org.gradle.api.plugins.BasePluginExtension
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
+import org.gradle.authentication.http.BasicAuthentication
 
 val mavenRepositoryUrl = providers.gradleProperty("mavenRepositoryUrl")
     .orElse(providers.environmentVariable("MAVEN_REPOSITORY_URL"))
+    .orElse("https://maven.syrupstudios.net/releases/")
 val mavenRepositoryUsername = providers.gradleProperty("mavenRepositoryUsername")
     .orElse(providers.environmentVariable("MAVEN_REPOSITORY_USERNAME"))
 val mavenRepositoryPassword = providers.gradleProperty("mavenRepositoryPassword")
@@ -50,15 +52,16 @@ extensions.configure<PublishingExtension> {
     }
 
     repositories {
-        if (mavenRepositoryUrl.isPresent) {
-            maven {
-                name = "remote"
-                url = uri(mavenRepositoryUrl.get())
-                if (mavenRepositoryUsername.isPresent || mavenRepositoryPassword.isPresent) {
-                    credentials {
-                        username = mavenRepositoryUsername.orNull
-                        password = mavenRepositoryPassword.orNull
-                    }
+        maven {
+            name = "syrupStudios"
+            url = uri(mavenRepositoryUrl.get())
+            if (mavenRepositoryUsername.isPresent || mavenRepositoryPassword.isPresent) {
+                credentials {
+                    username = mavenRepositoryUsername.orNull
+                    password = mavenRepositoryPassword.orNull
+                }
+                authentication {
+                    create<BasicAuthentication>("basic")
                 }
             }
         }

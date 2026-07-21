@@ -8,9 +8,9 @@ val neoForgeVersion = property("deps.neoforge_version") as String
 val modernHud = stonecutter.eval(stonecutter.current.version, ">=1.21.11")
 val targetJavaVersion = if (stonecutter.eval(stonecutter.current.version, ">=26")) 25 else 21
 
-version = property("mod.version") as String
+version = "${property("mod.version")}+$minecraftVersion-neoforge"
 group = property("mod.group") as String
-base.archivesName = "${property("mod.id")}-$minecraftVersion-neoforge"
+base.archivesName = property("mod.id") as String
 
 neoForge {
     version = neoForgeVersion

@@ -20,9 +20,9 @@ val requiredJava = JavaVersion.toVersion(targetJavaVersion)
 
 apply(plugin = if (remappedMinecraft) "net.fabricmc.fabric-loom-remap" else "net.fabricmc.fabric-loom")
 
-version = property("mod.version") as String
+version = "${property("mod.version")}+$minecraftVersion-fabric"
 group = property("mod.group") as String
-base.archivesName = "${property("mod.id")}-$minecraftVersion-fabric"
+base.archivesName = property("mod.id") as String
 
 val loomExtension = extensions.getByType<LoomGradleExtensionAPI>()
 
