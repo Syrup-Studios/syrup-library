@@ -1,6 +1,6 @@
 package net.syrupstudios.syruplibrary.config;
 
-import net.fabricmc.loader.api.FabricLoader;
+import net.syrupstudios.syruplibrary.loaders.Platform;
 
 import java.nio.file.Path;
 import java.util.LinkedHashMap;
@@ -18,7 +18,7 @@ public final class SyrupConfigManager {
                 .toAbsolutePath().normalize();
     }
 
-    /** Returns the process-wide Fabric config manager. */
+    /** Returns the process-wide config manager for the active mod loader. */
     public static SyrupConfigManager getInstance() {
         return Holder.INSTANCE;
     }
@@ -36,7 +36,7 @@ public final class SyrupConfigManager {
         }
         Path path = configDirectory.resolve(spec.id() + ".json5").normalize();
         if (!path.getParent().equals(configDirectory)) {
-            throw new IllegalArgumentException("Config path escapes the Fabric config directory: " + path);
+            throw new IllegalArgumentException("Config path escapes the loader config directory: " + path);
         }
         spec.sealForRegistration();
         RegisteredConfig registered = new RegisteredConfig(spec, path);
@@ -59,6 +59,6 @@ public final class SyrupConfigManager {
 
     private static final class Holder {
         private static final SyrupConfigManager INSTANCE =
-                new SyrupConfigManager(FabricLoader.getInstance().getConfigDir());
+                new SyrupConfigManager(Platform.INSTANCE.configDirectory());
     }
 }

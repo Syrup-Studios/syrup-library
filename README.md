@@ -1,6 +1,11 @@
 # Syrup Library
 
-Syrup Library is a Fabric library mod for reusable, typed configuration in Syrup Studios mods.
+Syrup Library provides reusable, typed configuration for Syrup Studios mods. Its shared source is
+structured for Fabric, Forge, and NeoForge builds.
+
+Shared code accesses loader-specific services through `Platform.INSTANCE`. Implementations for
+Fabric, Forge, and NeoForge are selected at build time by Stonecutter, so loader APIs stay out of
+the shared configuration code.
 
 ## Maven coordinates
 
