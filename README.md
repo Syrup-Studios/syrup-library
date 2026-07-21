@@ -21,7 +21,7 @@ The current Stonecutter target is Fabric for Minecraft 1.20.1 on Java 17. The pr
 ./gradlew clean build
 ```
 
-Stonecutter writes the Fabric 1.20.1 artifacts below `versions/1.20.1/build/libs/`. The remapped mod JAR embeds the JSON5 parser it needs at runtime.
+Stonecutter writes the Fabric 1.20.1 artifacts below `versions/1.20.1-fabric/build/libs/`. The remapped mod JAR embeds the JSON5 parser it needs at runtime.
 
 ## Consumer example
 
@@ -59,7 +59,6 @@ ConfigLoadResult initial = config.initialResult();
 
 Registration creates `config/example_mod.json5` when absent and performs the initial load. A consuming mod may expose its own reload command using `config.reload()`; Syrup Library intentionally provides no global command.
 
-See the [consumer setup guide](docs/consumer-setup.md), [complete generated example](examples/syrup_essentials.json5), and [third-party notices](THIRD_PARTY_NOTICES.md).
 
 ## Reload and fallback semantics
 

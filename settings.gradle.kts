@@ -3,24 +3,30 @@ pluginManagement {
         mavenLocal()
         mavenCentral()
         gradlePluginPortal()
-        maven("https://maven.fabricmc.net/")
         maven("https://maven.kikugie.dev/releases") { name = "KikuGie Releases" }
         maven("https://maven.kikugie.dev/snapshots") { name = "KikuGie Snapshots" }
+        maven("https://maven.fabricmc.net/")
+        maven("https://maven.minecraftforge.net/")
+        maven("https://maven.neoforged.net/releases/")
     }
 }
 
 plugins {
-    id("dev.kikugie.stonecutter") version "0.9.4"
+    id("dev.kikugie.stonecutter") version "0.7.10"
     id("dev.kikugie.loom-back-compat") version "0.3"
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
+rootProject.name = "colorful_armor_bar"
+
 stonecutter {
     create(rootProject) {
-        // See https://stonecutter.kikugie.dev/wiki/start/#choosing-minecraft-versions
-        versions("1.20.1")
-        vcsVersion = "1.20.1"
+        fun target(version: String, loader: String, buildscript: String = loader) {
+            version("$version-$loader", version).buildscript = "build.$buildscript.gradle.kts"
+        }
+
+        target("1.20.1", "fabric")
+
+        vcsVersion = "1.20.1-fabric"
     }
 }
-
-rootProject.name = "Syrup Library"

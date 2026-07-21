@@ -2,10 +2,11 @@ plugins {
     id("dev.kikugie.stonecutter")
 }
 
-stonecutter active "1.20.1"
+stonecutter active "1.20.1-fabrics"
 
-// See https://stonecutter.kikugie.dev/wiki/config/params
-stonecutter parameters {
-    swaps["mod_version"] = "\"${property("mod.version")}\";"
-    swaps["minecraft"] = "\"${node.metadata.version}\";"
+stonecutter {
+    parameters {
+        val loader = node.metadata.project.substringAfterLast('-')
+        constants.match(loader, "fabric", "forge", "neoforge")
+    }
 }
