@@ -60,6 +60,15 @@ java {
     }
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            artifactId = "${property("mod.id")}-fabric-$minecraftVersion"
+            from(components["java"])
+        }
+    }
+}
+
 val fabricMetadataSource = rootProject.file("src/main/resources/fabric.mod.json")
 val generatedFabricMetadata = layout.buildDirectory.file("generated/fabricMetadata/fabric.mod.generated.json")
 val generateFabricMetadata = tasks.register("generateFabricMetadata") {
@@ -88,9 +97,6 @@ tasks.processResources {
         "modDescription" to project.property("mod.description"),
         "authors" to project.property("mod.authors"),
         "license" to project.property("mod.license"),
-        "homepage" to project.property("mod.homepage"),
-        "issues" to project.property("mod.issues"),
-        "sources" to project.property("mod.sources"),
         "fl" to project.property("deps.fabric_loader"),
         "fapi" to project.property("deps.fabric_api")
     )
