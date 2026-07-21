@@ -9,7 +9,7 @@ val targetJavaVersion = 17
 
 version = property("mod.version") as String
 group = property("mod.group") as String
-base.archivesName = "${property("mod.id")}-forge-$mcVersion"
+base.archivesName = "${property("mod.id")}-$mcVersion-forge"
 
 legacyForge {
     setVersion("$mcVersion-$forgeVersion")
@@ -28,6 +28,7 @@ sourceSets.main {
 
 java {
     withSourcesJar()
+    withJavadocJar()
     toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
@@ -62,3 +63,5 @@ tasks.register<Copy>("buildAndCollect") {
     into(rootProject.layout.buildDirectory.file("libs/${project.property("mod.version")}"))
     dependsOn("build")
 }
+
+apply(from = rootProject.file("gradle/maven-publishing.gradle.kts"))

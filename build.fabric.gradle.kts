@@ -22,7 +22,7 @@ apply(plugin = if (remappedMinecraft) "net.fabricmc.fabric-loom-remap" else "net
 
 version = property("mod.version") as String
 group = property("mod.group") as String
-base.archivesName = "${property("mod.id")}-fabric-$minecraftVersion"
+base.archivesName = "${property("mod.id")}-$minecraftVersion-fabric"
 
 val loomExtension = extensions.getByType<LoomGradleExtensionAPI>()
 
@@ -54,20 +54,12 @@ if (modernHud) {
 
 java {
     withSourcesJar()
+    withJavadocJar()
     targetCompatibility = requiredJava
     sourceCompatibility = requiredJava
     toolchain {
         vendor = JvmVendorSpec.ADOPTIUM
         languageVersion = JavaLanguageVersion.of(targetJavaVersion)
-    }
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("mavenJava") {
-            artifactId = "${property("mod.id")}-fabric-$minecraftVersion"
-            from(components["java"])
-        }
     }
 }
 
@@ -134,3 +126,5 @@ tasks.withType<JavaCompile>().configureEach {
     options.encoding = "UTF-8"
     options.release.set(targetJavaVersion)
 }
+
+apply(from = rootProject.file("gradle/maven-publishing.gradle.kts"))

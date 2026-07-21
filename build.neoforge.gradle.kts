@@ -10,7 +10,7 @@ val targetJavaVersion = if (stonecutter.eval(stonecutter.current.version, ">=26"
 
 version = property("mod.version") as String
 group = property("mod.group") as String
-base.archivesName = "${property("mod.id")}-neoforge-$minecraftVersion"
+base.archivesName = "${property("mod.id")}-$minecraftVersion-neoforge"
 
 neoForge {
     version = neoForgeVersion
@@ -26,6 +26,7 @@ if (modernHud) {
 
 java {
     withSourcesJar()
+    withJavadocJar()
     toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
@@ -68,3 +69,5 @@ tasks.register<Copy>("buildAndCollect") {
     into(rootProject.layout.buildDirectory.file("libs/${project.property("mod.version")}"))
     dependsOn("build")
 }
+
+apply(from = rootProject.file("gradle/maven-publishing.gradle.kts"))
