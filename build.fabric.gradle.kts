@@ -29,6 +29,7 @@ val loomExtension = extensions.getByType<LoomGradleExtensionAPI>()
 dependencies {
     add("minecraft", "com.mojang:minecraft:$minecraftVersion")
     if (remappedMinecraft) add("mappings", loomExtension.officialMojangMappings())
+    implementation("de.marhali:json5-java:${property("deps.json5")}")
 
     val modConfiguration = if (remappedMinecraft) "modImplementation" else "implementation"
     add(modConfiguration, "net.fabricmc:fabric-loader:${property("deps.fabric_loader")}")

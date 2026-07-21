@@ -8,12 +8,11 @@ import org.slf4j.LoggerFactory;
 /** Fabric entrypoint for Syrup Library. */
 public final class SyrupLibrary implements ModInitializer {
     public static final String MOD_ID = "syrup_library";
-    public static final String VERSION = /*$ mod_version*/ "0.1.0";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     @Override
     public void onInitialize() {
         SyrupConfigManager.getInstance();
-        LOGGER.info("Syrup Library {} initialized", VERSION);
+        LOGGER.info("Syrup Library initialized");
     }
 }
