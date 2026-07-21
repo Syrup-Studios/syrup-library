@@ -17,7 +17,7 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
-rootProject.name = "colorful_armor_bar"
+rootProject.name = "syrup_library"
 
 stonecutter {
     create(rootProject) {
