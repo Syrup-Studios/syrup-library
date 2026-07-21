@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "${id}",
+  "version": "${version}",
+  "name": "${name}",
+  "description": "Typed, documented JSON5 configuration infrastructure for Syrup Studios mods.",
+  "authors": [
+    "Syrup Studios"
+  ],
+  "contact": {
+    "sources": "https://github.com/Syrup-Studios/syrup_library"
+  },
+  "license": "RSL-1.0",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.syrupstudios.syruplibrary.SyrupLibrary"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.2",
+    "minecraft": "${minecraft}",
+    "java": ">=17",
+    "fabric-api": "*"
+  }
+}
