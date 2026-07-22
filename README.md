@@ -23,27 +23,6 @@ dependencies {
 }
 ```
 
-Or to a Maven project:
-
-```xml
-<repositories>
-    <repository>
-        <id>syrup-studios</id>
-        <url>https://maven.syrupstudios.net/releases/</url>
-    </repository>
-    <repository>
-        <id>fabric</id>
-        <url>https://maven.fabricmc.net/</url>
-    </repository>
-</repositories>
-
-<dependency>
-    <groupId>net.syrupstudios</groupId>
-    <artifactId>syrup_library</artifactId>
-    <version>0.1.0+1.20.1-fabric</version>
-</dependency>
-```
-
 ## Remote publishing
 
 This part is more for me, since i know i will forget
