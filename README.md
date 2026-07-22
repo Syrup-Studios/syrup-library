@@ -3,10 +3,6 @@
 Syrup Library provides reusable, typed configuration for Syrup Studios mods. Its shared source is
 structured for Fabric, Forge, and NeoForge builds.
 
-Shared code accesses loader-specific services through `Platform.INSTANCE`. Implementations for
-Fabric, Forge, and NeoForge are selected at build time by Stonecutter, so loader APIs stay out of
-the shared configuration code.
-
 ## Maven coordinates
 
 The current Fabric artifact is published as:
@@ -55,6 +51,8 @@ Or to a Maven project:
 ```
 
 ## Remote publishing
+
+This part is more for me, since i know i will forget
 
 The remote repository defaults to `https://maven.syrupstudios.net/releases/`. Set its credentials
 through environment variables before running `publish`:
