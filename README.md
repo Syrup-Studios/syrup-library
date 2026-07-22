@@ -11,12 +11,6 @@ The current Fabric artifact is published as:
 net.syrupstudios:syrup_library:0.1.0+1.20.1-fabric
 ```
 
-Publish it to the local Maven repository with:
-
-```shell
-./gradlew :1.20.1-fabric:publishToMavenLocal
-```
-
 Consumers can then add it to a Fabric Loom project:
 
 ```kotlin
